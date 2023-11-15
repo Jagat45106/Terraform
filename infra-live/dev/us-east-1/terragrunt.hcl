@@ -4,7 +4,7 @@ include "root" {
 
 terraform {
   #source = "../../..//infra-modules/vpc"
-  source = "git::git@github.com:Jagat45106/Terraform.git//vpc?ref=dev"
+  source = "git::git@github.com:Jagat45106/Terraform.git/vpc?ref=dev"
 }
 
 locals {
