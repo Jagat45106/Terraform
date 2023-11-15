@@ -1,13 +1,15 @@
 variable "vpc_cidr" {}
 variable "vpc_tenancy" {}
 variable "enable_dns_hostnames" {}
-variable "vpc_tags" {type = map(string)}
+variable "vpc_tags" { type = map(string) }
 
-variable "subnet_private_a" {}
-variable "subnet_private_b" {}
-variable "subnet_public_a" {}
-variable "subnet_public_b" {}
-variable "subnet_tags" {type =map(string)}
+variable "public_subnets" {
+  type    = list(string)
+  default = []
+}
+variable "availble_az" {
+  type    = list(string)
+  default = []
+}
 
 variable "igw_name" {}
-variable "rt_tags" {}

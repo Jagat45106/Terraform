@@ -1,14 +1,14 @@
 include "root" {
-  path   = find_in_parent_folders()
+  path = find_in_parent_folders("common.hcl")
 }
 
 terraform {
-  source = "../../../infra-modules/vpc"
+  source = "../../..//infra-modules/vpc"
 }
 
 locals {
-  Name = "dev"
-  CostCenter = "RnD"
+  Name        = "dev"
+  CostCenter  = "RnD"
   Application = "Web"
 }
 
@@ -18,22 +18,12 @@ inputs = {
   enable_dns_hostnames = true
   vpc_tags = {
     Name        = "${local.Name}-vpc"
-    CostCenter  = "${local.CostCenter}
+    CostCenter  = "${local.CostCenter}"
     Application = "${local.Application}"
   }
 
-  subnet_private_a     = "192.168.1.0/26"
-  subnet_private_b     = "192.168.1.64/26"
-  subnet_public_a      = "192.168.1.128/26"
-  subnet_public_b      = "192.168.1.192/26"
-  subnet_tags = {
-    Name = "dev_subnet"
-  }
-  igw_name = "dev-igw"
-
-  rt_tags = {
-    Name = "dev-route-table"
-  }
-
+  public_subnets = ["192.168.1.0/26","192.168.1.64/26"]
+  availble_az = ["us-east-1a","us-east-1b"]
+  igw_name       = "dev-igw"
 }
 
