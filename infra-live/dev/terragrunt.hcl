@@ -1,4 +1,6 @@
-
+include root {
+  path = read_terragrunt_config(find_in_parent_folders())
+}
 
 generate "provider" {
   path      = "provider.tf"
@@ -13,10 +15,10 @@ terraform {
   }
 }
 provider "aws" {
-  access_key = "AKIAXS7GJDOXZYMRRKJZ"
-  secret_key = "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"
+  access_key = "hhh"
+  secret_key = "nnnnn/xBga"
   region              = "us-east-1"
   allowed_account_ids = ["521784597423"]
-}
+  }
 EOF
 }
