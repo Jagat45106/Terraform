@@ -1,5 +1,5 @@
 include {
-  path = path_relative_to_include()
+  path = find_in_parent_folders()
 }
 
 terraform {
