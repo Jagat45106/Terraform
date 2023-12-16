@@ -23,8 +23,8 @@ inputs = {
     Application = "${local.Application}"
   }
 
-  public_subnets = ["192.168.1.0/26","192.168.1.64/26"]
-  availble_az = ["us-east-1a","us-east-1b"]
+  public_subnets = ["192.168.1.0/26", "192.168.1.64/26"]
+  availble_az    = ["us-east-1a", "us-east-1b"]
   igw_name       = "dev-igw"
 }
 
