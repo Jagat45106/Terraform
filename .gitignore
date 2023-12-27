@@ -1,6 +1,7 @@
 # Local .terraform and .terragrunt directories
 **/.terraform/*
 **/.terragrunt/*
+.terragrunt-cache*
 
 # Terraform lockfile
 .terraform.lock.hcl
@@ -8,9 +9,12 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+backend.tf
+provider.tf
 
 # Crash log files
 crash.log
+.DS_Store
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
