@@ -1,6 +1,6 @@
 terraform {
   #source = "../../../..//infra-modules/vpc"
-  source = "git::git@github.com:Jagat45106/Terraform.git//infra-modules/ec2?ref=dev"
+  source = "git::git@github.com:Jagat45106/Terraform.git//infra-modules/ec2?ref=master"
 }
 
 include {
@@ -9,11 +9,6 @@ include {
 
 include "env" {
   path = "${get_terragrunt_dir()}/../../../_env/qa.hcl"
-}
-
-dependency "vpc" {
-  config_path = "../vpc"
-  skip_outputs = true
 }
 
 inputs = {

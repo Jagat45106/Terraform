@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Terraform Running in QA Env..
+  build:
+    commands:
+      - echo Terragrunt Plan Started `date`
+      - terragrunt run-all plan
+  post_build:
+    commands:
+      - echo Build completed on `date`
