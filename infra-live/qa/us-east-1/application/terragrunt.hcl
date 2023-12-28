@@ -11,11 +11,6 @@ include "env" {
   path = "${get_terragrunt_dir()}/../../../_env/qa.hcl"
 }
 
-dependency "vpc" {
-  config_path = "../vpc"
-  skip_outputs = true
-}
-
 inputs = {
   env = "qa"
   instance_type = "t2.micro"
