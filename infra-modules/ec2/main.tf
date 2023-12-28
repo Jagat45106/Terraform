@@ -6,4 +6,7 @@ resource "aws_instance" "web" {
 
 resource "aws_security_group" "application_sg" {
   name = "application_sg"
+  tags = {
+    name = var.env
+  }
 }
