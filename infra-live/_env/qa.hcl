@@ -1,13 +1,28 @@
-terraform {
-  #source = "../../..//infra-modules/vpc"
-  source = "git::git@github.com:Jagat45106/Terraform.git//infra-modules/vpc?ref=master"
-}
-
 locals {
   Name        = "qa"
   CostCenter  = "RnD"
   Application = "Web"
 }
+
+// generate "provider" {
+//   path      = "provider.tf"
+//   if_exists = "overwrite"
+//   contents  = <<EOF
+// terraform {
+//   required_providers {
+//     aws = {
+//       source  = "hashicorp/aws"
+//       version = ">=5.0"
+//     }
+//   }
+// }
+// provider "aws" {
+//   profile = "dev"
+//   region = "us-east-1"
+  
+// }
+// EOF
+// }
 
 inputs = {
   vpc_cidr             = "192.168.1.0/24"
