@@ -1,8 +1,3 @@
-terraform {
-  #source = "../../..//infra-modules/vpc"
-  source = "git::git@github.com:Jagat45106/Terraform.git//infra-modules/vpc?ref=master"
-}
-
 locals {
   Name        = "stg"
   CostCenter  = "RnD"
