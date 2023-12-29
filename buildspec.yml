@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo Terragrunt Plan Started `date`
-      - sh terragrunt run-all plan
+      - terragrunt -v
   post_build:
     commands:
       - echo Build completed on `date`
