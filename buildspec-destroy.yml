@@ -11,13 +11,12 @@ phases:
   pre_build:
     commands:
       - echo Terraform Running in QA Env..
-      - terraform validate
   build:
     commands:
-      - echo INFRA PLAN RUN STARTED `date`
+      - echo INFRA DESTROY RUN STARTED `date`
       - cd infra-live/qa
-      - terragrunt run-all plan --terragrunt-no-color --terragrunt-non-interactive
+      - terragrunt run-all destroy --terragrunt-no-color --terragrunt-non-interactive
   post_build:
     commands:
-      - echo ********INFRA PLAN SUCCESSFULL******* on `date`
+      - echo ******INFRA DESTROY SUCCESSFUL******* `date`
       - echo Build completed on `date`
