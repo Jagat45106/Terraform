@@ -13,12 +13,9 @@ phases:
       - echo Terraform Running in QA Env..
   build:
     commands:
-      - echo Terragrunt Plan Started `date`
-      - ls -ltra
+      - echo INFRA PLAN RUN STARTED `date`
       - cd infra-live/qa
-      - pwd
-      - terragrunt -v
-      - terraform -v
+      - terragrunt run-all plan
   post_build:
     commands:
       - echo Build completed on `date`
