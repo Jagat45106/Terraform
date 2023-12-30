@@ -1,0 +1,51 @@
+version: 0.2
+env:
+  variables:
+    CODE_SRC_DIR: "infra-live/qa"
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - curl -Lo /tmp/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.50.9/terragrunt_linux_amd64
+      - chmod +x /tmp/terragrunt
+      - sudo mv /tmp/terragrunt /usr/local/bin/
+      - curl -Lo /tmp/terraform.zip https://releases.hashicorp.com/terraform/1.6.4/terraform_1.6.4_linux_amd64.zip
+      - unzip -o /tmp/terraform.zip -d /usr/local/bin
+      - rm /tmp/terraform.zip
+  build:
+    commands:
+      - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
+      - "echo ## TERRAFORM PLAN : Generate the Terraform Plan"
+      - "terragrunt run-all plan -out tfapply --terragrunt-no-color --terragrunt-non-interactive"
+  post_build:
+    commands:
+      - echo ********INFRA PLAN SUCCESSFULL******* on `date`
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
+    
+# version: 0.2
+# phases:
+#   install:
+#     commands:
+#       - curl -Lo /tmp/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.50.9/terragrunt_linux_amd64
+#       - chmod +x /tmp/terragrunt
+#       - sudo mv /tmp/terragrunt /usr/local/bin/
+#       - curl -Lo /tmp/terraform.zip https://releases.hashicorp.com/terraform/1.6.4/terraform_1.6.4_linux_amd64.zip
+#       - unzip -o /tmp/terraform.zip -d /usr/local/bin
+#       - rm /tmp/terraform.zip
+#   pre_build:
+#     commands:
+#       - echo Terraform Running in QA Env..
+#       - terraform validate
+#   build:
+#     commands:
+#       - echo INFRA PLAN RUN STARTED `date`
+#       - cd infra-live/qa
+#       - terragrunt run-all plan --terragrunt-no-color --terragrunt-non-interactive
+#   post_build:
+#     commands:
+#       - echo ********INFRA PLAN SUCCESSFULL******* on `date`
+#       - echo Build completed on `date`
