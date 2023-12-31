@@ -27,10 +27,9 @@ terraform {
     }
   }
 }
-provider "aws" {
-  profile = "dev"
-  region = "us-west-2"
-  
-}
+// provider "aws" {
+//   profile = "dev"
+//   region = "us-west-2"
+// }
 EOF
 }
