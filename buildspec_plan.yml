@@ -20,7 +20,7 @@ phases:
       - "terragrunt run-all plan -out tfapply --terragrunt-no-color --terragrunt-non-interactive"
   post_build:
     commands:
-      - "ls ${CODEBUILD_SRC_DIR} -ltra"
+      - "ls ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR} -ltra"
       - echo ********INFRA PLAN SUCCESSFULL******* on `date`
       - echo Build completed on `date`
 artifacts:
