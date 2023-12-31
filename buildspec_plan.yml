@@ -18,11 +18,9 @@ phases:
       - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
       - "echo ## TERRAFORM PLAN : Generate the Terraform Plan"
       - "terragrunt run-all plan -out tfapply --terragrunt-no-color --terragrunt-non-interactive"
-      - "mv tfapply ../../tfapply"
-      - "ls ${CODEBUILD_SRC_DIR} -ltra"
+      - "pwd"
   post_build:
     commands:
-      - "ls"
       - echo ********INFRA PLAN SUCCESSFULL******* on `date`
       - echo Build completed on `date`
 artifacts:

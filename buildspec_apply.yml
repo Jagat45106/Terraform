@@ -17,6 +17,7 @@ phases:
     commands:
       - "cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}"
       - "echo ## TERRAFORM APPLY : Starting with the Terraform Apply"
+      - "terragrunt run-all plan -out tfapply --terragrunt-no-color"
       - "terragrunt run-all apply -input=false tfapply --terragrunt-no-color --terragrunt-non-interactive"
   post_build:
     commands:
